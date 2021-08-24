@@ -1,0 +1,140 @@
+<!--ESTE ES EL HTML-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="nav-bar"></div>
+
+    <div id="app">
+        <div class="product">
+            <div class="product-image">
+                <img :src="image">
+            </div>
+            <div class="product-info">
+                <h1>{{product}}</h1>
+                <p v-if="inStock>5">En inventario</p>
+                <p v-else-if="inStock<=5 && inStock>0">Se están agotando</p>
+                <p v-else>Sin inventario</p>
+                <ul>
+                    <li v-for="detalle in detalles">{{detalle}}</li>
+                </ul>
+                <div v-for="(variant, index) in variants"
+                    :key ="variant.variantID"
+                    class="color-box"
+                    :style="{backgroundColor: variant.variantColor}"
+                    @mouseover="updateProduct(index)">
+                </div>
+                <button @click="aggCart"
+                    :disabled="!inStock"
+                    :class="{disableButton: !inStock}"
+                    >Agregar al carrito</button>
+                <div class="cart" id="cart"> 
+                    <p>Carrito({{cart}})</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+/*ESTE ES EL CSS*/
+
+img {
+    border: 1px solid black;
+    width: 300px;
+    height: auto;
+    box-shadow: 0px .5px 4px rgb(81, 81, 99)
+}
+
+.cart {
+    margin-top: 10px;
+    margin-right: 200px;
+    margin-left:15px;
+    float: left;
+    border: 1px solid black;
+    padding-inline: 10px;
+}
+
+button {
+    border: 1px solid black;
+    background: rgb(48, 133, 136);
+    color: white;
+    height: 40px;
+    width: 150px;
+    font-size: 14px;
+    
+}
+
+.color-box {
+    width: 50px;
+    height: 50px;
+    margin-top:5px;
+    border: 1px dotted black;
+}
+
+.disableButton {
+    background: crimson;
+}
+
+
+/*ESTE ES EL JAVASCRIPT*/
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        product: 'Blusa',
+        selectedVariant:0,
+        /*image: './Imagenes/blusa_blue.jpg',*/
+        detalles: ["80% algodón", "15% sintético", "5% otros", "Lavar a mano"],
+        variants: [
+            {
+                variantId: 1,
+                variantColor: 'Blue',
+                variantImage: './imagenes/blusa_blue.jpg',
+                variantQuantity: 20
+            },
+            {
+                variantId: 2,
+                variantColor: 'Pink',
+                variantImage: './imagenes/blusa_pink.jpg',
+                variantQuantity: 0
+            },
+            {
+                variantId: 3,
+                variantColor: 'White',
+                variantImage: './imagenes/blusa_white.jpg',
+                variantQuantity: 5
+            }
+        ],
+        cart: 0
+    },
+    methods: {
+        aggCart: function(){
+            this.cart +=1
+            alert("agregado")
+        },
+        updateProduct: function(index){
+            this.selectedVariant=index
+        },
+},
+computed: {
+    image(){
+        return this.variants [this.selectedVariant].variantImage
+    },
+    inStock(){
+        return this.variants [this.selectedVariant].variantQuantity
+    }
+}
+})
