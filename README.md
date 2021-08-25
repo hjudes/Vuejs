@@ -27,7 +27,49 @@ En este repositorio se encontrarán dos ejercicios, el primero de ellos llamado 
 
 ## Vue CLI
 
-Otra forma adicional para el desarrollo de proyectos en Vuejs es hacerlo a través de la interfaz de línea de comandos. Vue CLI es precisamente esa herramienta de Vuejs que fue creada por el equipo de Vuejs para ayudar con la creación del scaffolding y la configuración inicial del proyecto. Es importante notar, que para poder usar Vue CLI es necesario tener instalado Node.js en el equipo en donde se vaya a utilizar. A continuación se describirán los comandos básicos de operación de Vue CLI y algunas funcionalidades para el desarrollo.
+Otra forma adicional para el desarrollo de proyectos en Vuejs es hacerlo a través de la interfaz de línea de comandos. [Vue CLI](https://cli.vuejs.org/) es precisamente esa herramienta de Vuejs que fue creada por el equipo de Vuejs para ayudar con la creación del scaffolding y la configuración inicial del proyecto. Es importante notar, que para poder usar Vue CLI es necesario tener instalado Node.js en el equipo en donde se vaya a utilizar. A continuación se describirán los comandos básicos de operación de Vue CLI y algunas funcionalidades para el desarrollo.
 
+Instalación Vue CLI:
 
+```
+npm install -g @vue/cli
+```
 
+Una vez instalado Vue CLI se debe hacer la creación del proyecto específico:
+
+```
+vue create my-project
+```
+
+Ahora, para ejecutar la aplicación se debe utilizar el siguiente comando que genera una instancia local del servidor para la ejecución:
+
+```
+npm run serve
+```
+
+Las siguientes son funcionalidades extras para el desarrollo en Vue CLI:
+
+Detección de errores de linteo:
+```
+npm run lint
+```
+
+Ejecutar aplicación de producción:
+```
+npm run build
+```
+
+Instala el comando serve de manera global:
+```
+npm i -g serve
+```
+
+Iniciar un localhost con la aplicación de producción:
+```
+serve -s dist
+```
+
+Crear una aplicación web local mediante la cual se gestionan los proyectos Vue:
+```
+vue ui
+```
