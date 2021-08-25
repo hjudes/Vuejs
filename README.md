@@ -73,3 +73,7 @@ Crear una aplicación web local mediante la cual se gestionan los proyectos Vue:
 ```
 vue ui
 ```
+
+## Copyright y licencia
+
+Vuejs se distribuye bajo licencia modelo [MIT](https://github.com/vuejs/vue-cli/blob/dev/LICENSE)
