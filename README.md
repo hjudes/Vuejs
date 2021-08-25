@@ -76,4 +76,4 @@ vue ui
 
 ## Copyright y licencia
 
-Vuejs se distribuye bajo licencia modelo [MIT](https://github.com/vuejs/vue-cli/blob/dev/LICENSE)
+Vuejs y Vue CLI se distribuyen bajo licencia modelo [MIT](https://github.com/vuejs/vue-cli/blob/dev/LICENSE).
