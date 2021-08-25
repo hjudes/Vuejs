@@ -23,109 +23,11 @@ La guía considerará los resultados obtenidos Visual Studio Code v.1.59.0.
 
 ## Contenidos 
 
-En el siguiente código HTML, se mostará en la web un sencillo botón que luego de pulsarlo, leerá un .txt externo y mostará su contenido en pantalla. (Para los efectos de este ejemplo lo mostará como un título h5 pero bien puede usarse cualquier otra forma de visualización de contenido.
+En este repositorio se encontrarán dos ejercicios, el primero de ellos llamado VueT que tiene los contenidos desarrollados durante la sesión de clase. Por el otro lado, se encuentra una carpeta de VuePassw que es un ejempo adicional de manejo de interfases pequeñas a través de Vuejs en donde se enfatiza en el uso de renderización condicional y otros elementos del desarrollo frontend.
 
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajax</title>
-    
-</head>
-<body>
-    <button id='boton'>hacer click</button>
-    <script src=index.js></script>
-    <h5></h5>
-</body>
-</html>
-```
+## Vue CLI
 
-A través del siguiente archivo de JavaScript se hará el llamado al archivo con el método correspondiente, teniendo en cuenta la síntaxis apropiada.
+Otra forma adicional para el desarrollo de proyectos en Vuejs es hacerlo a través de la interfaz de línea de comandos. Vue CLI es precisamente esa herramienta de Vuejs que fue creada por el equipo de Vuejs para ayudar con la creación del scaffolding y la configuración inicial del proyecto. Es importante notar, que para poder usar Vue CLI es necesario tener instalado Node.js en el equipo en donde se vaya a utilizar. A continuación se describirán los comandos básicos de operación de Vue CLI y algunas funcionalidades para el desarrollo.
 
-```
-document.querySelector('button').addEventListener('click', mostradatos);
-
-function mostradatos(){
- 
-    const xhttp = new XMLHttpRequest(); 
-    xhttp.open('GET', 'archivo.txt', true); 
-    xhttp.send();
-    
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status ==200){          
-            document.querySelector('h5').innerHTML = this.responseText;
-        }                        
-    }
-}  
-    
-```
-
-## Leer datos de una fuente externa (.json, REST APIs)
-
-En el siguiente código HTML, se mostará en la web un sencillo botón que luego de pulsarlo, leerá una fuente externa en formato .json y populará una tabla a la cual previamente hemos dado estructura de columnas.
-
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajax</title>
-    
-</head>
-<body>
-    <button id='boton'>hacer click</button>
-    <script src=index.js></script>
-    
-    <table>
-        <thead>
-            <tr>
-               <th>País</th> 
-               <th>Capital</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
-</body>
-</html>
-```
-
-El código indicado a continuación de JavaScript muestra los métodos y procedimientos para mostar la información que se requiere. Tener presente, es necesario "parsear" el JSON para poder manipularlo como objeto de JavaScript. Mayor información sobre el Parse, puede consultarla en el siguiente enlace: [JSON.parse()](https://www.w3schools.com/js/js_json_parse.asp)
-
-```
-document.querySelector('#boton').addEventListener('click', llenardatos);
-
-function llenardatos(){
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', 'https://restcountries.eu/rest/v2/all', true);
-    xhttp.send();
-
-    xhttp.onreadystatechange = function(){
-        if (this.readyState==4 && this.status==200){
-          console.log(this.responseText);
-          let datos = JSON.parse(this.responseText);   
-          console.log(datos);
-          let res = document.querySelector('tbody');
-          res.innerHTML = '';
-
-          for(let item of datos){ 
-            console.log(item.name);
-                res.innerHTML += `
-                    <tr>
-                        <td>${item.name}</td>
-                        <td>${item.capital}</td>
-                    </tr>
-                    `
-            }
-        }
-    }
-}
-```
 
 
