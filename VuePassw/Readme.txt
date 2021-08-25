@@ -1,1 +1,1 @@
-Archivo de pruenba
+En este ejercicio se renderizan condicionales
